@@ -30,8 +30,6 @@ module "kafka" {
 }
 
 ```
-Refer [examples](https://github.com/squareops/terraform-kubernetes-Kafka/tree/main/examples/complate) for more details.
-
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
