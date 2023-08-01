@@ -23,7 +23,6 @@ This module is compatible with EKS version 1.23,1.24,1.25 and 1.26 which is grea
 ```hcl
 module "kafka" {
   source = "../.."
-  kafka_enabled = true
   kafka_config = {
     values_yaml   = file("./config/values.yaml")
   }
@@ -42,6 +41,13 @@ No requirements.
 |------|---------|
 | <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of the kafka chart that will be used to deploy kafka application. | `string` | `"23.0.7"` | no |
+| <a name="input_namespace"></a> [namespace](#input\_namespace) | Name of the Kubernetes namespace where the kafka deployment will be deployed. | `string` | `"kafka"` | no |
 
 ## Outputs
 

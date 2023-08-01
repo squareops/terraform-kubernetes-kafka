@@ -9,3 +9,13 @@ zookeeper:
     accessModes:
       - ReadWriteOnce
     size: 8Gi
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+          - key: "Infra-Services"
+            operator: In
+            values:
+            - "true"
