@@ -1,0 +1,21 @@
+## @param replicaCount Number of Kafka nodes
+replicaCount: 2
+## @param replicaCount Number of Zookeeper nodes
+zookeeper:
+  replicaCount: 2
+  persistence:
+    enabled: true
+    storageClass: ""
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+          - key: "Infra-Services"
+            operator: In
+            values:
+            - "true"
