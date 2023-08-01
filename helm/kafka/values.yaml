@@ -1242,7 +1242,15 @@ metrics:
     ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
     ## Note: metrics.kafka.podAffinityPreset, metrics.kafka.podAntiAffinityPreset, and metrics.kafka.nodeAffinityPreset will be ignored when it's set
     ##
-    affinity: {}
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+              - key: "Infra-Services"
+                operator: In
+                values:
+                - "true"
     ## @param metrics.kafka.nodeSelector Node labels for pod assignment
     ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
     ##

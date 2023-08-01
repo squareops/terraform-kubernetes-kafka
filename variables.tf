@@ -21,5 +21,5 @@ variable "kafka_config" {
   default = {
     values_yaml                  = ""
   }
-  description = "Specify the configuration settings for locust, including the hostname and custom YAML values."
+  description = "Specify the configuration settings for kafka and custom YAML values."
 }

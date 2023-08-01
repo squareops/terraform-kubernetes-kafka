@@ -1,4 +1,4 @@
 output "kafka_info" {
-  description = "locust hostname"
+  description = "Kafka_Info"
   value = module.kafka.kafka_info
 }

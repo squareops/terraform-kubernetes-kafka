@@ -6,7 +6,7 @@ image:
 replicaCount: 1
 
 kafkaServer:
-  - kafka.kafka.svc.cluster.local:9092
+  - kafka.${namespace}.svc.cluster.local:9092
 
 # Specifies broker version to use, leave empty for default
 kafkaBrokerVersion:

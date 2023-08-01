@@ -29,7 +29,7 @@ resource "helm_release" "kafka_exporter" {
   version    = "2.3.0"
   namespace  = var.namespace
   values = [
-    templatefile("${path.module}/helm/kafka/kafka-exporter.yaml", {})
+    templatefile("${path.module}/helm/kafka/kafka-exporter.yaml", {namespace = var.namespace})
   ]
 }
 
