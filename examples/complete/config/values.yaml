@@ -1,14 +1,12 @@
-## @param replicaCount Number of Kafka nodes
-replicaCount: 2
-## @param replicaCount Number of Zookeeper nodes
-zookeeper:
-  replicaCount: 2
-  persistence:
-    enabled: true
-    storageClass: ""
-    accessModes:
-      - ReadWriteOnce
-    size: 8Gi
+## Kafka resource requests and limits
+resources: 	
+  limits:	
+    cpu: 400m	
+    memory: 400Mi	
+  requests:	
+    cpu: 200m	
+    memory: 256Mi
+
 
 affinity:
   nodeAffinity:
