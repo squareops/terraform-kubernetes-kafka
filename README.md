@@ -9,13 +9,13 @@
 
 This module deploys Kafka. With this module, take the advantage of kafka installation in your K8s Cluster. Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. This repository contains the necessary files and code to run and configure the Kafka tool effectively.
 ## Important Notes:
-This module is compatible with EKS version 1.23,1.24,1.25 and 1.26 which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
+This module is compatible with EKS version 1.23,1.24,1.25,1.26,1.27 which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
 
 ## Supported Versions:
 
 |  Kafka Helm Chart Version    |     K8s supported version   |  
 | :-----:                       |         :---                |
-| **23.0.7**                     |    **1.23,1.24,1.25,1.26**           |
+| **23.0.7**                     |    **1.23,1.24,1.25,1.26,1.27**           |
 
 
 ## Usage Example
@@ -24,7 +24,18 @@ This module is compatible with EKS version 1.23,1.24,1.25 and 1.26 which is grea
 module "kafka" {
   source = "../.."
   kafka_config = {
-    values_yaml   = file("./config/values.yaml")
+      metrics_enabled                      = true
+      heap_size_option                     = "-Xmx1024m -Xms1024m" 
+      storage_class_name                   = "gp2"
+      kafka_pv_volume_size                 = "10Gi"
+      kafka_node_replica_count             = 2
+      default_partition_per_topic          = 1
+      default_replication_factor_per_topic = 1
+      zookeeper_enabled                    = true
+      zookeper_pv_volume_size              = "10Gi"
+      zookeper_node_replica_count          = 2
+      sasl_inter_broker_password           = ""
+      values_yaml                          = file("./config/values.yaml")
   }
 }
 
