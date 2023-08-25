@@ -20,8 +20,12 @@ resource "helm_release" "kafka_deploy" {
       kafka_pv_volume_size                 = var.kafka_config.kafka_pv_volume_size
       default_partition_per_topic          = var.kafka_config.default_partition_per_topic
       default_replication_factor_per_topic = var.kafka_config.default_replication_factor_per_topic
+      zookeeper_enabled                    = var.kafka_config.zookeeper_enabled
+      metrics_enabled                      = var.kafka_config.metrics_enabled
       zookeper_node_replica_count          = var.kafka_config.zookeper_node_replica_count
       zookeper_pv_volume_size              = var.kafka_config.zookeper_pv_volume_size
+      heap_size_option                     = var.kafka_config.heap_size_option
+      sasl_inter_broker_password           = var.kafka_config.sasl_inter_broker_password
     }),
     var.kafka_config.values_yaml
   ]
