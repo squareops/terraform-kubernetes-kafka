@@ -19,7 +19,18 @@ variable "kafka_enabled" {
 variable "kafka_config" {
   type = any
   default = {
-    values_yaml                  = ""
+    kafka_node_replica_count             = 1
+    storage_class_name                   = "gp2"
+    kafka_pv_volume_size                 = "8Gi"
+    default_replication_factor_per_topic = 1
+    default_partition_per_topic          = 1
+    zookeeper_enabled                    = true
+    metrics_enabled                      = true
+    zookeper_node_replica_count          = 1
+    zookeper_pv_volume_size              = "8Gi"
+    values_yaml                          = ""
+    heap_size_option                     = "-Xmx1024m -Xms1024m"
+    sasl_inter_broker_password           = ""
   }
   description = "Specify the configuration settings for kafka and custom YAML values."
 }

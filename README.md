@@ -9,13 +9,13 @@
 
 This module deploys Kafka. With this module, take the advantage of kafka installation in your K8s Cluster. Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. This repository contains the necessary files and code to run and configure the Kafka tool effectively.
 ## Important Notes:
-This module is compatible with EKS version 1.23,1.24,1.25 and 1.26 which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
+This module is compatible with EKS version 1.23,1.24,1.25,1.26,1.27 which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
 
 ## Supported Versions:
 
 |  Kafka Helm Chart Version    |     K8s supported version   |  
 | :-----:                       |         :---                |
-| **23.0.7**                     |    **1.23,1.24,1.25,1.26**           |
+| **23.0.7**                     |    **1.23,1.24,1.25,1.26,1.27**           |
 
 
 ## Usage Example
@@ -24,7 +24,18 @@ This module is compatible with EKS version 1.23,1.24,1.25 and 1.26 which is grea
 module "kafka" {
   source = "../.."
   kafka_config = {
-    values_yaml   = file("./config/values.yaml")
+      metrics_enabled                      = true
+      heap_size_option                     = "-Xmx1024m -Xms1024m" 
+      storage_class_name                   = "gp2"
+      kafka_pv_volume_size                 = "10Gi"
+      kafka_node_replica_count             = 2
+      default_partition_per_topic          = 1
+      default_replication_factor_per_topic = 1
+      zookeeper_enabled                    = true
+      zookeper_pv_volume_size              = "10Gi"
+      zookeper_node_replica_count          = 2
+      sasl_inter_broker_password           = ""
+      values_yaml                          = file("./config/values.yaml")
   }
 }
 
@@ -60,7 +71,7 @@ No requirements.
 
 To report an issue with a project:
 
-  1. Check the repository's [issue tracker](https://github.com/squareops/terraform-kubernetes-Kafka/issues) on GitHub
+  1. Check the repository's [issue tracker](https://github.com/sq-ia/terraform-kubernetes-kafka/issues) on GitHub
   2. Search to see if the issue has already been reported
   3. If you can't find an answer to your question in the documentation or issue tracker, you can ask a question by creating a new issue. Be sure to provide enough context and details so others can understand your problem.
 
@@ -72,7 +83,7 @@ Apache License, Version 2.0, January 2004 (http://www.apache.org/licenses/).
 
 To support a GitHub project by liking it, you can follow these steps:
 
-  1. Visit the repository: Navigate to the [GitHub repository](https://github.com/squareops/terraform-kubernetes-Kafka).
+  1. Visit the repository: Navigate to the [GitHub repository](https://github.com/sq-ia/terraform-kubernetes-kafka).
 
   2. Click the "Star" button: On the repository page, you'll see a "Star" button in the upper right corner. Clicking on it will star the repository, indicating your support for the project.
 

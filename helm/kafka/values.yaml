@@ -145,7 +145,7 @@ log4j: ""
 existingLog4jConfigMap: ""
 ## @param heapOpts Kafka Java Heap size
 ##
-heapOpts: -Xmx1024m -Xms1024m
+heapOpts: ${heap_size_option}
 ## @param deleteTopicEnable Switch to enable topic deletion or not
 ##
 deleteTopicEnable: false
@@ -179,7 +179,7 @@ logsDirs: /bitnami/kafka/data
 maxMessageBytes: _1000012
 ## @param defaultReplicationFactor Default replication factors for automatically created topics
 ##
-defaultReplicationFactor: 1
+defaultReplicationFactor: ${default_replication_factor_per_topic}
 ## @param offsetsTopicReplicationFactor The replication factor for the offsets topic
 ##
 offsetsTopicReplicationFactor: 1
@@ -197,7 +197,7 @@ numIoThreads: 8
 numNetworkThreads: 3
 ## @param numPartitions The default number of log partitions per topic
 ##
-numPartitions: 1
+numPartitions: ${default_partition_per_topic}
 ## @param numRecoveryThreadsPerDataDir The number of threads per data directory to be used for log recovery at startup and flushing at shutdown
 ##
 numRecoveryThreadsPerDataDir: 1
@@ -282,7 +282,7 @@ auth:
       interBrokerUser: admin
       ## @param auth.sasl.jaas.interBrokerPassword Kafka inter broker communication password for SASL authentication
       ##
-      interBrokerPassword: ""
+      interBrokerPassword: "${sasl_inter_broker_password}"
       ## @param auth.sasl.jaas.zookeeperUser Kafka ZooKeeper user for SASL authentication
       ##
       zookeeperUser: ""
@@ -439,7 +439,7 @@ extraEnvVarsSecret: ""
 
 ## @param replicaCount Number of Kafka nodes
 ##
-replicaCount: 1
+replicaCount: ${kafka_node_replica_count}
 ## @param minId Minimal node.id or broker.id values, nodes increment their value respectively
 ## Nodes or Brokers increment their ID starting at this minimal value.
 ## E.g., with `minId=100` and 3 nodes, IDs will be 100, 101, 102 for brokers 0, 1, and 2, respectively.
@@ -520,9 +520,13 @@ lifecycleHooks: {}
 ## @param resources.limits The resources limits for the container
 ## @param resources.requests The requested resources for the container
 ##
-resources:
-  limits: {}
-  requests: {}
+resources: 	
+  limits:	
+    cpu: 200m	
+    memory: 200Mi	
+  requests:	
+    cpu: 100m	
+    memory: 128Mi
 ## Kafka pods' Security Context
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
 ## @param podSecurityContext.enabled Enable security context for the pods
@@ -952,14 +956,14 @@ persistence:
   ## If undefined (the default) or set to null, no storageClassName spec is
   ## set, choosing the default provisioner.
   ##
-  storageClass: ""
+  storageClass: "${storage_class_name}"
   ## @param persistence.accessModes Persistent Volume Access Modes
   ##
   accessModes:
     - ReadWriteOnce
   ## @param persistence.size PVC Storage Request for Kafka data volume
   ##
-  size: 8Gi
+  size: ${kafka_pv_volume_size}
   ## @param persistence.annotations Annotations for the PVC
   ##
   annotations: {}
@@ -1102,7 +1106,7 @@ metrics:
   kafka:
     ## @param metrics.kafka.enabled Whether or not to create a standalone Kafka exporter to expose Kafka metrics
     ##
-    enabled: true
+    enabled: ${metrics_enabled}
     ## Bitnami Kafka exporter image
     ## ref: https://hub.docker.com/r/bitnami/kafka-exporter/tags/
     ## @param metrics.kafka.image.registry Kafka exporter image registry
@@ -1789,10 +1793,10 @@ kraft:
 zookeeper:
   ## @param zookeeper.enabled Switch to enable or disable the ZooKeeper helm chart. Must be false if you use Kraft mode.
   ##
-  enabled: true
+  enabled: ${zookeeper_enabled}
   ## @param zookeeper.replicaCount Number of ZooKeeper nodes
   ##
-  replicaCount: 1
+  replicaCount: ${zookeper_node_replica_count}
   ## ZooKeeper authenticaiton
   ##
   auth:
@@ -1821,10 +1825,10 @@ zookeeper:
   ##
   persistence:
     enabled: true
-    storageClass: ""
+    storageClass: "${storage_class_name}"
     accessModes:
       - ReadWriteOnce
-    size: 8Gi
+    size: ${zookeper_pv_volume_size}
 
 ## External Zookeeper Configuration
 ## All of these values are only used if `zookeeper.enabled=false`
