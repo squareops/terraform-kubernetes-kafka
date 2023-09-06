@@ -49,7 +49,7 @@ resource "helm_release" "kafka_exporter" {
 resource "kubernetes_pod" "kafka-client" {
   metadata {
     name      = "kafka-client"
-    namespace = "kafka"
+    namespace = var.namespace
   }
 
   spec {
