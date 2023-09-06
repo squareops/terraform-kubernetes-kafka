@@ -25,7 +25,7 @@ module "kafka" {
   source = "../.."
   kafka_config = {
       metrics_enabled                      = true
-      heap_size_option                     = "-Xmx1024m -Xms1024m" 
+      heap_size_option                     = "-Xmx1024m -Xms1024m"
       storage_class_name                   = "gp2"
       kafka_pv_volume_size                 = "10Gi"
       kafka_node_replica_count             = 2

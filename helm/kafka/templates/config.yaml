@@ -100,4 +100,4 @@
 #   name: kafka_$1_$2_$3
 #   type: GAUGE
 #   labels:
-#     quantile: "0.$4"	
+#     quantile: "0.$4"
