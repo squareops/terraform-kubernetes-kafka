@@ -520,12 +520,12 @@ lifecycleHooks: {}
 ## @param resources.limits The resources limits for the container
 ## @param resources.requests The requested resources for the container
 ##
-resources: 	
-  limits:	
-    cpu: 200m	
-    memory: 200Mi	
-  requests:	
-    cpu: 100m	
+resources:
+  limits:
+    cpu: 200m
+    memory: 200Mi
+  requests:
+    cpu: 100m
     memory: 128Mi
 ## Kafka pods' Security Context
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
@@ -1172,12 +1172,12 @@ metrics:
     ## @param metrics.kafka.resources.limits The resources limits for the container
     ## @param metrics.kafka.resources.requests The requested resources for the container
     ##
-    resources: 	
-      limits:	
-        cpu: 200m	
-        memory: 200Mi	
-      requests:	
-        cpu: 100m	
+    resources:
+      limits:
+        cpu: 200m
+        memory: 200Mi
+      requests:
+        cpu: 100m
         memory: 128Mi
     ## Kafka exporter pods' Security Context
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
@@ -1406,12 +1406,12 @@ metrics:
     ## @param metrics.jmx.resources.limits The resources limits for the JMX exporter container
     ## @param metrics.jmx.resources.requests The requested resources for the JMX exporter container
     ##
-    resources:	
-      limits:	
-        cpu: 200m	
-        memory: 200Mi	
-      requests:	
-        cpu: 100m	
+    resources:
+      limits:
+        cpu: 200m
+        memory: 200Mi
+      requests:
+        cpu: 100m
         memory: 128Mi
     ## Prometheus JMX exporter service configuration
     ##
@@ -1481,7 +1481,7 @@ metrics:
     enabled: true
     ## @param metrics.serviceMonitor.namespace Namespace in which Prometheus is running
     ##
-    namespace: "monitoring"
+    namespace: ${namespace}
     ## @param metrics.serviceMonitor.interval Interval at which metrics should be scraped
     ## ref: https://github.com/coreos/prometheus-operator/blob/master/Documentation/api.md#endpoint
     ##
@@ -1492,7 +1492,7 @@ metrics:
     scrapeTimeout: "10s"
     ## @param metrics.serviceMonitor.labels Additional labels that can be used so ServiceMonitor will be discovered by Prometheus
     ##
-    labels: 
+    labels:
       release: prometheus-operator
       job: "kafka"
     ## @param metrics.serviceMonitor.selector Prometheus instance selector labels
@@ -1518,7 +1518,7 @@ metrics:
     enabled: true
     ## @param metrics.prometheusRule.namespace Namespace in which Prometheus is running
     ##
-    namespace: "monitoring"
+    namespace: ${namespace}
     ## @param metrics.prometheusRule.labels Additional labels that can be used so PrometheusRule will be discovered by Prometheus
     ##
     labels: {}

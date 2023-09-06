@@ -1,11 +1,11 @@
 ## Kafka resource requests and limits
-resources: 	
-  limits:	
-    cpu: 400m	
-    memory: 400Mi	
-  requests:	
-    cpu: 200m	
-    memory: 256Mi
+resources:
+  limits:
+    cpu: 500m
+    memory: 1000Mi
+  requests:
+    cpu: 300m
+    memory: 500Mi
 
 
 affinity:

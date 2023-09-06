@@ -15,6 +15,7 @@ resource "helm_release" "kafka_deploy" {
   namespace  = var.namespace
   values = [
     templatefile("${path.module}/helm/kafka/values.yaml", {
+      namespace                            = var.namespace
       kafka_node_replica_count             = var.kafka_config.kafka_node_replica_count
       storage_class_name                   = var.kafka_config.storage_class_name
       kafka_pv_volume_size                 = var.kafka_config.kafka_pv_volume_size
@@ -48,7 +49,7 @@ resource "helm_release" "kafka_exporter" {
 resource "kubernetes_pod" "kafka-client" {
   metadata {
     name      = "kafka-client"
-    namespace = "kafka"
+    namespace = var.namespace
   }
 
   spec {
