@@ -59,7 +59,7 @@ readiness:
 prometheus:
   serviceMonitor:
     enabled: true
-    namespace: monitoring
+    namespace: ${namespace}
     interval: "30s"
     # If serviceMonitor is enabled and you want prometheus to automatically register
     # target using serviceMonitor, add additionalLabels with prometheus release name

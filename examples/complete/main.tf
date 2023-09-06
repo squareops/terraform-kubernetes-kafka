@@ -8,7 +8,7 @@ locals {
 }
 
 module "kafka" {
-  source = "../.."
+  source = "git@github.com:sq-ia/terraform-kubernetes-kafka.git"
   kafka_config = {
       metrics_enabled                      = true
       heap_size_option                     = "-Xmx1024m -Xms1024m" 
