@@ -1,6 +1,6 @@
 variable "chart_version" {
   type        = string
-  default     = "23.0.7"
+  default     = "29.3.7"
   description = "Version of the kafka chart that will be used to deploy kafka application."
 }
 
