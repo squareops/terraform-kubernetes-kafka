@@ -44,7 +44,10 @@ module "kafka" {
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.57 |
 
 ## Providers
 
@@ -53,18 +56,33 @@ No requirements.
 | <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
 | <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | n/a |
 
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [helm_release.kafka_deploy](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.kafka_exporter](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [kubernetes_namespace.kafka](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [kubernetes_pod.kafka-client](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/pod) | resource |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of the kafka chart that will be used to deploy kafka application. | `string` | `"23.0.7"` | no |
+| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | Version of the kafka chart that will be used to deploy kafka application. | `string` | `"29.3.7"` | no |
+| <a name="input_kafka_config"></a> [kafka\_config](#input\_kafka\_config) | Specify the configuration settings for kafka and custom YAML values. | `any` | <pre>{<br>  "default_partition_per_topic": 1,<br>  "default_replication_factor_per_topic": 1,<br>  "heap_size_option": "-Xmx1024m -Xms1024m",<br>  "kafka_node_replica_count": 1,<br>  "kafka_pv_volume_size": "8Gi",<br>  "metrics_enabled": true,<br>  "sasl_inter_broker_password": "",<br>  "storage_class_name": "gp2",<br>  "values_yaml": "",<br>  "zookeeper_enabled": true,<br>  "zookeper_node_replica_count": 1,<br>  "zookeper_pv_volume_size": "8Gi"<br>}</pre> | no |
+| <a name="input_kafka_enabled"></a> [kafka\_enabled](#input\_kafka\_enabled) | enabled the kafka deployment. | `bool` | `true` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Name of the Kubernetes namespace where the kafka deployment will be deployed. | `string` | `"kafka"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_Kafka"></a> [Kafka](#output\_Kafka) | Kafka\_Info |
+| <a name="output_kafka_info"></a> [kafka\_info](#output\_kafka\_info) | Kafka\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Contribution & Issue Reporting
