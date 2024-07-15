@@ -39,7 +39,7 @@ resource "helm_release" "kafka_exporter" {
   chart      = "prometheus-kafka-exporter"
   repository = "https://prometheus-community.github.io/helm-charts"
   timeout    = 600
-  version    = "2.3.0"
+  version    = "2.10.0"
   namespace  = var.namespace
   values = [
     templatefile("${path.module}/helm/kafka/kafka-exporter.yaml", { namespace = var.namespace })
