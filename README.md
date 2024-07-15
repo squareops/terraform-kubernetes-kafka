@@ -9,13 +9,13 @@
 
 This module deploys Kafka. With this module, take the advantage of kafka installation in your K8s Cluster. Apache Kafka is a distributed event store and stream-processing platform. It is an open-source system developed by the Apache Software Foundation written in Java and Scala. The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds. This repository contains the necessary files and code to run and configure the Kafka tool effectively.
 ## Important Notes:
-This module is compatible with EKS version 1.23,1.24,1.25,1.26,1.27 which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
+This module is compatible with EKS version 1.23,1.24,1.25,1.26,1.27,1.28,1.29 which is great news for users deploying the module on an EKS cluster running that version. Review the module's documentation, meet specific configuration requirements, and test thoroughly after deployment to ensure everything works as expected.
 
 ## Supported Versions:
 
 |  Kafka Helm Chart Version    |     K8s supported version   |  
 | :-----:                       |         :---                |
-| **23.0.7**                     |    **1.23,1.24,1.25,1.26,1.27**           |
+| **29.3.7**                     |    **1.23,1.24,1.25,1.26,1.27,1.28,1.29**           |
 
 
 ## Usage Example
