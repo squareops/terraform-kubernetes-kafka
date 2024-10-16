@@ -22,7 +22,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_kafka"></a> [kafka](#module\_kafka) | git@github.com:sq-ia/terraform-kubernetes-kafka.git | n/a |
+| <a name="module_kafka"></a> [kafka](#module\_kafka) | git@github.com:squareops/terraform-kubernetes-kafka.git | n/a |
 
 ## Resources
 

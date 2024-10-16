@@ -1,5 +1,5 @@
 locals {
-  region = "us-east-2"
+  region = ""
   additional_tags = {
     Owner      = "organization_name"
     Expires    = "Never"
@@ -8,7 +8,7 @@ locals {
 }
 
 module "kafka" {
-  source = "git@github.com:sq-ia/terraform-kubernetes-kafka.git"
+  source = "../../"
   kafka_config = {
     metrics_enabled                      = true
     heap_size_option                     = "-Xmx1024m -Xms1024m"
