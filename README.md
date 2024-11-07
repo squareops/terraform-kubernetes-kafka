@@ -22,7 +22,8 @@ This module is compatible with EKS version 1.23,1.24,1.25,1.26,1.27,1.28,1.29 wh
 
 ```hcl
 module "kafka" {
-  source = "../.."
+  source                                   = "squareops/kafka/kubernetes"
+  version                                  = "1.1.0"
   kafka_config = {
       metrics_enabled                      = true
       heap_size_option                     = "-Xmx1024m -Xms1024m"

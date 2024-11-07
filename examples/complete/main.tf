@@ -8,7 +8,8 @@ locals {
 }
 
 module "kafka" {
-  source = "../../"
+  source                                 = "squareops/kafka/kubernetes"
+  version                                = "1.1.0"
   kafka_config = {
     metrics_enabled                      = true
     heap_size_option                     = "-Xmx1024m -Xms1024m"
