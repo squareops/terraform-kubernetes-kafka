@@ -22,7 +22,7 @@ No requirements.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_kafka"></a> [kafka](#module\_kafka) | squareops/kafka/kubernetes.git | n/a |
+| <a name="module_kafka"></a> [kafka](#module\_kafka) | squareops/kafka/kubernetes | n/a |
 
 ## Resources
 
@@ -39,5 +39,5 @@ No inputs.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_kafka_credentials"></a> [kafka\_credentials](#output\_kafka\_credentials) | kafka\_Info |
+| <a name="output_kafka_info"></a> [kafka\_info](#output\_kafka\_info) | Kafka\_Info |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
